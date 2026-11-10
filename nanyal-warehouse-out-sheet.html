@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nanyal Warehouse Out Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf7f0;--bg2:#ffffff;--card:#ffffff;--line:#eadfcf;--tx:#2a2233;--mu:#7a7086;--gold:#b9771c;--gold2:#e3a43c;--ok:#1f9d63;--warn:#c9741a;--bad:#d64545;--glow:rgba(227,164,60,.35);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+
+:root{color-scheme:light}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:radial-gradient(1100px 600px at 8% -10%,#ffe6bd 0,transparent 60%),radial-gradient(900px 520px at 100% 5%,#e9defe 0,transparent 55%),radial-gradient(800px 500px at 50% 110%,#ffd9e0 0,transparent 60%),var(--bg);background-attachment:fixed;color:var(--tx);font:500 15px/1.5 Manrope,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.28;z-index:0;animation:float 18s ease-in-out infinite;pointer-events:none}
+.o1{width:380px;height:380px;background:#7b4fd6;top:-100px;left:-80px}.o2{width:320px;height:320px;background:var(--gold);bottom:-80px;right:-60px;animation-delay:-8s}
+@keyframes float{50%{transform:translate(50px,40px) scale(1.15)}}
+main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:40px 20px 80px}
+header{text-align:center;margin-bottom:34px;animation:rise .8s both}
+.logo{font:800 clamp(38px,8vw,64px)/1 Fraunces,Georgia,serif;letter-spacing:.14em;background:linear-gradient(100deg,var(--gold),var(--gold2),var(--gold));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+header p{color:var(--mu);letter-spacing:.3em;font-size:12px;margin:10px 0 0;text-transform:uppercase}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+#drop{position:relative;border-radius:22px;padding:2px;background:conic-gradient(from var(--a,0deg),var(--gold),#7b4fd6,var(--gold2),var(--gold));animation:spin 6s linear infinite,rise .8s .15s both;cursor:pointer}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes spin{to{--a:360deg}}
+#drop .in{background:var(--bg2);border-radius:20px;padding:46px 20px;text-align:center;transition:.3s}
+#drop.over{transform:scale(1.02);box-shadow:0 0 60px var(--glow)}#drop.over .in{background:var(--card)}
+.ic{width:70px;height:70px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);animation:bob 2.6s ease-in-out infinite}
+.ic svg{width:32px;height:32px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@keyframes bob{50%{transform:translateY(-8px)}}
+#drop h2{margin:0 0 4px;font:600 22px Fraunces,serif}#drop p{margin:0;color:var(--mu)}
+#files{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;justify-content:center}
+.chip{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);padding:6px 8px 6px 12px;border-radius:99px;font-size:13px;animation:pop .4s both}
+.chip b{font-weight:700;color:var(--gold)}.chip button{all:unset;cursor:pointer;width:20px;height:20px;border-radius:50%;text-align:center;color:var(--mu);line-height:20px}.chip button:hover{background:var(--line);color:var(--tx)}
+@keyframes pop{from{opacity:0;transform:scale(.6)}}
+#busy{display:none;text-align:center;color:var(--mu);margin:22px}.sp{display:inline-block;width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--gold);border-radius:50%;vertical-align:-4px;margin-right:8px;animation:r 0.8s linear infinite}@keyframes r{to{transform:rotate(360deg)}}
+#out{margin-top:30px;display:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;animation:rise .6s both}
+.st small{color:var(--mu);text-transform:uppercase;letter-spacing:.12em;font-size:11px}.st div{font:800 34px Fraunces,serif;color:var(--gold)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.btn{all:unset;cursor:pointer;padding:12px 22px;border-radius:12px;font-weight:700;border:1px solid var(--line);background:var(--card);transition:.25s;text-align:center}
+.btn:hover{transform:translateY(-2px);border-color:var(--gold)}.btn.p{background:linear-gradient(120deg,var(--gold),var(--gold2));color:#1d1a24;border:0;box-shadow:0 8px 28px var(--glow)}.btn.p:hover{box-shadow:0 12px 38px var(--glow)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px;animation:rise .6s both}
+.card h3{margin:0 0 12px;font:600 13px Manrope;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.sheet{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);animation:slide .5s both}.row:last-child{border:0}.row b{color:var(--gold)}.card,.st{box-shadow:0 6px 24px rgba(120,80,20,.08)}
+@keyframes slide{from{opacity:0;transform:translateX(-16px)}}
+.cat{font-weight:700;margin:12px 0 2px;font-size:13px;letter-spacing:.08em}.cat:first-child{margin-top:0}
+.cc{display:flex;gap:10px;flex-wrap:wrap}.cc span{padding:8px 16px;border-radius:12px;background:var(--bg2);border:1px solid var(--line)}
+.warn{color:var(--warn);font-size:13px;padding:5px 0}
+.dup{padding:10px 0;border-bottom:1px solid var(--line)}.dup div{font-size:12.5px;color:var(--mu);margin:2px 0}
+.dup button{all:unset;cursor:pointer;margin:6px 6px 0 0;padding:6px 12px;border-radius:9px;border:1px solid var(--line);font-size:13px}.dup button.on{background:var(--gold);color:#1d1a24;border-color:var(--gold);font-weight:700}
+.err{color:var(--bad);text-align:center;margin-top:16px}
+footer{text-align:center;color:var(--mu);font-size:12px;margin-top:40px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<main>
+<header><div class="logo">NANYAL</div><p>Warehouse Out Sheet</p></header>
+<div id="drop"><div class="in">
+<div class="ic"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg></div>
+<h2>Drop your INSTA &amp; POSTEX label PDFs</h2><p>or click to browse · everything is processed privately in your browser</p>
+<div id="files"></div></div></div>
+<input id="pick" type="file" accept="application/pdf,.pdf" multiple hidden>
+<div id="busy"><span class="sp"></span><span id="busyt">Reading labels…</span></div>
+<div id="err" class="err"></div>
+<div id="out"></div>
+<footer>Date is filled in automatically · duplicate orders are merged · one A4 page</footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const CAT=["50ML PREMIUM","50ML STANDARD","100ML STANDARD","100ML SQUARE BOTTLE","OILS / ATTARS","TESTERS / ACCESSORIES"],UNM="UNMAPPED - CONFIRM CATEGORY";
+const OID="#\\d+(?:\\s*\\([a-zA-Z]\\))?",COLS=new Set("black blue pink red white silver gold green purple orange yellow grey gray brown rose".split(" "));
+const cat=n=>{n=n.toLowerCase();return/premium bottle/.test(n)?CAT[0]:/square bottle/.test(n)?CAT[3]:/white musk/.test(n)?CAT[4]:/atomizer/.test(n)?CAT[5]:/default title/.test(n)?UNM:/\b50ml\b/.test(n)?CAT[1]:/\b100ml\b/.test(n)?CAT[2]:UNM};
+const canon=n=>n.toLowerCase().replace(/[^a-z0-9]+/g," ").trim().split(" ").sort().join(" ");
+const e=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function norm(raw){
+ raw=raw.replace(/\b[A-Za-z]{0,2}\d{9,}\b/g," ").trim().replace(/^\s*\d+:\s*/,"").split("N\\A").join(" ").split("N/A").join(" ").replace(/\bDefault Title\b/gi," ").replace(/\bMade in Makkah\b/gi," ");
+ let size="";
+ if(/Square Bottle/i.test(raw)){size="100ML Square Bottle";raw=raw.replace(/Square Bottle/gi," ").replace(/\b\d+\s*ML\b/gi," ")}
+ else if(/Premium Bottle/i.test(raw)){size="50ML Premium Bottle";raw=raw.replace(/Premium Bottle/gi," ").replace(/\b\d+\s*ML\b/gi," ")}
+ else{const m=raw.match(/\b(\d+\s*ML)\b/i);if(m){size=m[1].replace(/ /g,"").toUpperCase();raw=raw.replace(/\b\d+\s*ML\b/gi," ")}}
+ const name=raw.replace(/[:\-]+/g," ").replace(/\s+/g," ").trim();
+ return size&&!name.toUpperCase().endsWith(size.toUpperCase())?(name+" "+size).trim():name}
+function parsePostex(t,notes,src){
+ const out=[];if(!t.includes("Consignee Information"))return out;
+ let ch=t.split(/(?=Consignee Information\s+Shipment Information)/);if(ch.length<=1)ch=t.split(new RegExp("(?=Order Ref:\\s*"+OID+")"));
+ for(const c of ch){
+  let r=c.match(new RegExp("Order Ref:\\s*("+OID+")"))||c.match(new RegExp("("+OID+")"));if(!r)continue;
+  const oid=r[1].replace(/\s+/g,""),pcs=c.match(/Pieces:\s*(\d+)/);let items=[];
+  for(const m of c.matchAll(/\[\s*(\d+)\s*x\s*([^\]]+?)(?:\s*-\s*|\])/gs)){const n=norm(m[2].trim());if(n)items.push([n,+m[1]])}
+  if(!items.length){const od=c.match(/Order Details:\s*(.+?)(?=\n[A-Z]{2,4}-\d+\s*(?:\n|$)|$)/s);
+   if(od){const flat=od[1].replace(/\s+/g," ").trim();for(const m of flat.matchAll(/\s*([^,*]+?)\s*\*\s*(\d+)\s*(?:,|$)/g)){const n=norm(m[1]);if(n)items.push([n,+m[2]])}}}
+  if(!items.length){notes.push(`${oid}: PostEx label has no readable Order Details - skipped`);continue}
+  const tr=c.match(/Tracking No:\s*(\d+)/);
+  out.push({order:oid,courier:"POSTEX",pieces:pcs?+pcs[1]:items.reduce((a,x)=>a+x[1],0),items,source:src,tracking:tr?tr[1]:"?",note:""})}
+ return out}
+function parseInsta(t,notes,src){
+ const out=[];if(!t.includes("Order #:")&&!t.toUpperCase().includes("INSTA"))return out;
+ let ch=t.split(/(?=Order #:)/);if(ch.length<=1)ch=t.split(/(?=INSTA)/i);
+ for(const c of ch){
+  const r=c.match(new RegExp("Order #:\\s*("+OID+")","i"));if(!r)continue;
+  const oid=r[1].replace(/\s+/g,""),pcs=c.match(/Pieces:\s*(\d+)/i),seg=c.match(/Weight:\s*[\d.]+\s*Kg\s*(?:[A-Z]{0,2}\d{9,}\s*)?(.*)/is);
+  const parts=(seg?seg[1]:c).split(/Qty:\s*\(\s*([\d.]+)\s*\)/i),im=[];
+  for(let i=0;i<parts.length-1;i+=2){let x=parts[i];if(!seg)x=x.trim()?x.trim().split("\n").pop():"";x=x.replace(/^[\s\-]+/,"");if(x.trim())im.push([x,parts[i+1]])}
+  if(!im.length){notes.push(`${oid}: INSTA label has no readable item line - skipped`);continue}
+  const items=[];for(const[x,q]of im){const n=norm(x);if(n)items.push([n,Math.trunc(+q)])}
+  if(items.length){const tr=c.match(/^([A-Z]{0,2}\d{9,})\s*$/m),nt=c.match(/Notes:\s*(.*?)\s*For complaints/is);
+   out.push({order:oid,courier:"INSTA",pieces:pcs?+pcs[1]:items.reduce((a,x)=>a+x[1],0),items,source:src,tracking:tr?tr[1]:"?",note:nt?nt[1].replace(/\s+/g," ").trim():""})}}
+ return out}
+async function pdfText(buf){
+ const pdf=await pdfjsLib.getDocument({data:buf}).promise,out=[];
+ for(let p=1;p<=pdf.numPages;p++){const tc=await(await pdf.getPage(p)).getTextContent(),rows=[];
+  for(const it of tc.items){if(!it.str)continue;const y=it.transform[5];let r=rows.find(r=>Math.abs(r.y-y)<=2.5);if(!r){r={y,a:[]};rows.push(r)}r.a.push({x:it.transform[4],w:it.width,s:it.str})}
+  rows.sort((a,b)=>b.y-a.y);
+  out.push(rows.map(r=>{r.a.sort((a,b)=>a.x-b.x);let s="",end=null;for(const t of r.a){if(end!==null&&t.x-end>1.5&&!s.endsWith(" ")&&!t.s.startsWith(" "))s+=" ";s+=t.s;end=t.x+t.w}return s.trim()}).join("\n"))}
+ return out.join("\n")}
+const sig=o=>o.courier+JSON.stringify([...o.items].map(String).sort())+o.pieces;
+let files=[],choices={},extras=[];
+function compute(){
+ const notes=files.flatMap(f=>f.notes),found=files.flatMap(f=>f.orders.map(o=>({...o,items:o.items.map(i=>[...i])})));
+ const g=new Map();found.forEach(o=>{if(!g.has(o.order))g.set(o.order,[]);g.get(o.order).push(o)});
+ const orders=[],dups=[];
+ for(const[oid,list]of g){const u=new Map();list.forEach(x=>{if(!u.has(sig(x)))u.set(sig(x),x)});const en=[...u.values()];
+  if(en.length==1){orders.push(en[0]);continue}
+  const ch=choices[oid]??0;dups.push({oid,en,ch});const pick=ch==="B"?en:[en[ch]];orders.push(...pick);
+  en.filter(x=>!pick.includes(x)).forEach(x=>notes.push(`Duplicate ${oid}: kept ${pick[0].courier} (${pick[0].source}), dropped ${x.courier} (${x.source})`))}
+ if(!orders.length)return{empty:true,notes,dups};
+ for(const o of orders){o.items=o.items.map(([n,q])=>{if(COLS.has(n.trim().toLowerCase())){const nn="ATOMIZER FOR TRAVEL "+n.trim()[0].toUpperCase()+n.trim().slice(1).toLowerCase();notes.push(`${o.order}: lone '${n}' treated as '${nn}'`);n=nn}return[n,q]})}
+ for(const o of orders){const q=o.items.reduce((a,x)=>a+x[1],0);if(o.pieces!=null&&o.pieces!==q){notes.push(`Pieces mismatch on ${o.order}: label says ${o.pieces}, items add up to ${q} - using ${q}`);o.pieces=q}
+  o.items.forEach(([n])=>{if(cat(n)===UNM)notes.push(`Unmapped descriptor: '${n}' on order ${o.order} - placed in unmapped category`)})}
+ const disp={},vars={},tot={},con={};
+ const un=n=>{const k=canon(n);disp[k]??=n;(vars[k]??=new Set()).add(n);return disp[k]};
+ for(const o of orders)for(const[n0,q]of o.items){const n=un(n0);tot[n]=(tot[n]||0)+q;(con[n]??=[]).push([o.order,q])}
+ for(const[n0,q]of extras){const n=un(n0);tot[n]=(tot[n]||0)+q;(con[n]??=[]).push(["MANUAL ADD",q]);if(cat(n)===UNM)notes.push(`Unmapped descriptor: '${n}' (manual add) - placed in unmapped category`)}
+ for(const k in vars)if(vars[k].size>1)notes.push(`Merged similar items into '${disp[k]}': `+[...vars[k]].filter(x=>x!==disp[k]).sort().map(x=>`'${x}'`).join("; "));
+ const groups=[...CAT,UNM].map(k=>[k,[]]),gi=Object.fromEntries(groups);
+ Object.entries(tot).sort((a,b)=>b[1]-a[1]||(a[0]<b[0]?-1:1)).forEach(([n,q])=>gi[cat(n)].push([n,q]));
+ const G=groups.filter(x=>x[1].length),grand=Object.values(tot).reduce((a,b)=>a+b,0),pieces=orders.reduce((a,o)=>a+o.pieces,0),ex=extras.reduce((a,x)=>a+x[1],0),courier={};
+ [...orders].sort((a,b)=>a.courier<b.courier?-1:1).forEach(o=>courier[o.courier]=(courier[o.courier]||0)+1);
+ const ci=n=>CAT.includes(cat(n))?CAT.indexOf(cat(n)):99,lines=["DESCRIPTOR AUDIT"];
+ Object.keys(tot).sort((a,b)=>ci(a)-ci(b)||(a<b?-1:1)).forEach(n=>lines.push(`  ${n.padEnd(40)} ${cat(n).padEnd(28)} ${tot[n]}`));
+ lines.push("\nVERIFICATION (orders per item)");for(const n in con)lines.push(`  ${n}: `+con[n].map(([o,q])=>`${o} x${q}`).join(", "));
+ lines.push(`\nGrand total ${grand} | sum of Pieces ${pieces} + manual extras ${ex} = ${pieces+ex} | parcels ${orders.length} | ${JSON.stringify(courier)}`);
+ return{groups:G,grand,pieces,ex,courier,notes,dups,lines,parcels:orders.length}}
+const today=new Date().toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"});
+function colSplit(c){const H=1.8,w=c.map(x=>H+x[1].length),T=w.reduce((a,b)=>a+b,0);let bi=0,bd=null,rw=0;
+ for(let i=0;i<=c.length;i++){const d=Math.abs(rw-(T-rw));if(bd===null||d<bd){bi=i;bd=d}if(i<c.length)rw+=w[i]}
+ if(c.length<2||bd/T<=.2)return[c.slice(0,bi),c.slice(bi)];
+ const L=[],R=[],half=T/2;let acc=0;
+ for(const[k,v]of c){const ww=H+v.length;if(acc+ww<=half)L.push([k,v]);else if(acc>=half)R.push([k,v]);else{let r=Math.floor(half-acc-H+.5);r=v.length>1?Math.max(1,Math.min(v.length-1,r)):v.length;L.push([k,v.slice(0,r)]);if(v.length>r)R.push([k+" (cont.)",v.slice(r)])}acc+=ww}
+ return[L,R]}
+function col(d,cats,x,y,pad,f,draw){
+ for(const[k,items]of cats){y+=6+pad*.8;if(draw){d.setFont("helvetica","bold");d.setFontSize(f+1);d.setTextColor(26);d.text(k,x,y+f)}y+=f+4+3+pad*.3;
+  for(const[n,q]of items){d.setFont("helvetica","normal");d.setFontSize(f);const ls=d.splitTextToSize(n,188),h=ls.length*(f+2.5)+2*pad;
+   if(draw){d.setTextColor(26);ls.forEach((l,i)=>d.text(l,x+6,y+pad+i*(f+2.5)+f));d.setFont("helvetica","bold");d.text(String(q),x+234,y+pad+f,{align:"right"});d.setDrawColor(221);d.setLineWidth(.5);d.line(x,y+h,x+240,y+h)}y+=h}}
+ return y}
+function build(d,pad,f,D){
+ const L=34,W=526;let y=34;d.setFont("helvetica","bold");d.setFontSize(10);d.setTextColor(26);d.text("Date: "+today,L+W,y+8,{align:"right"});y+=14;
+ const ts=24+pad*.3;d.setFontSize(ts);d.text("NANYAL",L+W/2,y+ts,{align:"center"});y+=30+pad*.3;
+ d.setFont("helvetica","normal");d.setFontSize(12);d.setTextColor(85);d.text("WAREHOUSE OUT SHEET",L+W/2,y+10,{align:"center"});y+=27;
+ const[l,r]=colSplit(D.groups),y0=y,iy=y0+10,hl=col(d,l,0,iy,pad,f,false),hr=col(d,r,0,iy,pad,f,false),bot=Math.max(hl,hr)+8,gs=11+pad*.1,gy=bot+10+14+pad*.1,bb=gy+12;
+ col(d,l,L+12,iy,pad,f,true);col(d,r,L+12+255,iy,pad,f,true);
+ d.setFont("helvetica","bold");d.setFontSize(gs);d.setTextColor(26);d.text("GRAND TOTAL UNITS TO PACK: "+D.grand,L+W/2,gy-4,{align:"center"});
+ d.setDrawColor(26);d.setLineWidth(1);d.roundedRect(L,y0,W,bb-y0,6,6,"S");y=bb+10;
+ const sec=t=>{d.setFillColor(244);d.setDrawColor(153);d.setLineWidth(1);d.rect(L,y,W,21,"FD");d.setFont("helvetica","bold");d.setFontSize(10);d.setTextColor(26);d.text(t,L+W/2,y+14,{align:"center"});y+=21},
+ tbl=(rows,w,rh,boldLast)=>{rows.forEach((r,i)=>{const hd=i==0;d.setDrawColor(153);d.setLineWidth(.5);let x=L;r.forEach((c,j)=>{d.setFillColor(hd?244:255,hd?244:255,hd?244:255);d.rect(x,y,w[j],rh,"FD");d.setFont("helvetica",hd||(boldLast&&i==rows.length-1)?"bold":"normal");d.setFontSize(10);d.setTextColor(26);d.text(c,x+6,y+rh/2+3.5);x+=w[j]});y+=rh})};
+ sec("COURIER ROUTING");const cr=[["Courier","Parcels"]];let tp=0;for(const k in D.courier){tp+=D.courier[k];cr.push([k,String(D.courier[k])])}cr.push(["TOTAL",String(tp)]);
+ tbl(cr,[400,126],2*(4+pad*.4)+12,true);y+=10;
+ sec("SIGN-OFF & RECONCILIATION");tbl([["Role","Signature"],["PACKAGING STAFF",""],["CUSTOMER SERVICE (CSR)",""],["OPERATION MANAGER (OM)",""]],[200,326],2*(5+pad*.9)+12,false);
+ return y}
+function makePdf(D){let best=null;
+ for(let s=-4;s<40;s+=.5){const pad=Math.max(.5,2+s),f=Math.max(7.5,Math.min(12.5,9.5+.12*s)),d=new jspdf.jsPDF({unit:"pt",format:"a4"});
+  if(build(d,pad,f,D)<=841.89-34)best=[pad,f];else if(best)break}
+ best??=[.5,7.5];const d=new jspdf.jsPDF({unit:"pt",format:"a4"});build(d,best[0],best[1],D);return d}
+const $=id=>document.getElementById(id);
+function dl(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
+function count(el,to){const t0=performance.now();(function s(t){const p=Math.min(1,(t-t0)/900);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0)}
+let D=null;
+function render(first){
+ D=compute();const o=$("out");o.style.display="block";
+ const dupH=D.dups.length?`<div class="card"><h3>Duplicate order IDs — choose which label to keep</h3>${D.dups.map((u,i)=>`<div class="dup" data-oid="${e(u.oid)}"><b>${e(u.oid)}</b>${u.en.map((x,j)=>`<div>[${j+1}] ${x.courier} · ${e(x.source)} · pieces ${x.pieces} · ${e(x.items.map(a=>a[1]+" × "+a[0]).join(", "))}</div>`).join("")}${u.en.map((x,j)=>`<button data-c="${j}" class="${u.ch===j?"on":""}">Keep ${j+1} (${x.courier})</button>`).join("")}<button data-c="B" class="${u.ch==="B"?"on":""}">Keep both</button></div>`).join("")}</div>`:"";
+ if(D.empty){o.innerHTML=dupH+`<div class="card"><h3>Nothing to build</h3>${D.notes.map(n=>`<div class="warn">⚠ ${e(n)}</div>`).join("")||"<div class='warn'>No readable orders found in the dropped files.</div>"}</div>`;return}
+ const sheet=`<div class="sheet">${(()=>{const[a,b]=colSplit(D.groups);let k=0;return[a,b].map(c=>`<div class="card">${c.map(([n,v])=>`<div class="cat">${e(n)}</div>${v.map(([i,q])=>`<div class="row" style="animation-delay:${(k++)*40}ms"><span>${e(i)}</span><b>${q}</b></div>`).join("")}`).join("")}</div>`).join("")})()}</div>`;
+ o.innerHTML=`<div class="stats">${[["Units to pack",D.grand],["Parcels",D.parcels],["Sum of pieces + extras",D.pieces+D.ex],["Flags",D.notes.length]].map((s,i)=>`<div class="st" style="animation-delay:${i*90}ms"><small>${s[0]}</small><div data-n="${s[1]}">0</div></div>`).join("")}</div>
+ <div class="bar"><button class="btn p" id="dp">⬇ Download out sheet PDF</button><button class="btn" id="dr">Download audit report</button><button class="btn" id="cl">Clear &amp; start over</button></div>${dupH}${sheet}
+ <div class="card"><h3>Courier routing</h3><div class="cc">${Object.entries(D.courier).map(([k,v])=>`<span><b>${k}</b> · ${v} parcels</span>`).join("")}</div></div>
+ <div class="card"><h3>${D.notes.length?"Notes / flags":"Reconciliation"}</h3>${D.notes.length?D.notes.map(n=>`<div class="warn">⚠ ${e(n)}</div>`).join(""):'<div style="color:var(--ok)">✓ No flags — everything reconciled.</div>'}</div>`;
+ o.querySelectorAll("[data-n]").forEach(el=>count(el,+el.dataset.n));
+ if(first)o.scrollIntoView({behavior:"smooth",block:"start"})}
+$("out").addEventListener("click",ev=>{const t=ev.target;
+ if(t.closest("[data-c]")){choices[t.closest(".dup").dataset.oid]=t.dataset.c==="B"?"B":+t.dataset.c;render()}
+ else if(t.id==="dp"){makePdf(D).save("Nanyal_Warehouse_Out_Sheet.pdf")}
+ else if(t.id==="dr"){dl(new Blob([D.lines.join("\n")+"\n\nNOTES / FLAGS\n"+(D.notes.map(n=>"  ! "+n).join("\n")||"  none")],{type:"text/plain"}),"Nanyal_Warehouse_Out_Sheet_report.txt")}
+ else if(t.id==="cl"){files=[];choices={};extras=[];$("out").style.display="none";chips()}});
+function chips(){$("files").innerHTML=files.map((f,i)=>`<span class="chip">📄 ${e(f.name)} <b>${f.orders.length}</b><button data-r="${i}" title="Remove">✕</button></span>`).join("")}
+$("files").addEventListener("click",ev=>{ev.stopPropagation();const i=ev.target.dataset.r;if(i!=null){files.splice(+i,1);chips();files.length?render():$("out").style.display="none"}});
+async function add(list){
+ const pdfs=[...list].filter(f=>/\.pdf$/i.test(f.name)||f.type==="application/pdf");$("err").textContent="";
+ if(!pdfs.length){$("err").textContent="Please drop PDF label files.";return}
+ $("busy").style.display="block";
+ for(const f of pdfs){$("busyt").textContent="Reading "+f.name+"…";const notes=[];let orders=[];
+  try{const t=await pdfText(await f.arrayBuffer());if(!t.trim())notes.push(`${f.name}: no text found (scanned image?) - skipped`);else orders=[...parsePostex(t,notes,f.name),...parseInsta(t,notes,f.name)]}
+  catch(x){notes.push(`${f.name}: could not be read (${x.name||"Error"}) - skipped`)}
+  files=files.filter(z=>z.name!==f.name);files.push({name:f.name,orders,notes});chips()}
+ $("busy").style.display="none";render(true)}
+const dz=$("drop");
+dz.onclick=()=>$("pick").click();$("pick").onchange=e=>{add(e.target.files);e.target.value=""};
+["dragenter","dragover"].forEach(v=>dz.addEventListener(v,ev=>{ev.preventDefault();dz.classList.add("over")}));
+["dragleave","drop"].forEach(v=>dz.addEventListener(v,ev=>{ev.preventDefault();dz.classList.remove("over")}));
+dz.addEventListener("drop",ev=>add(ev.dataTransfer.files));
+addEventListener("dragover",e=>e.preventDefault());addEventListener("drop",e=>e.preventDefault());
+</script>
+</body>
+</html>
