@@ -93,7 +93,7 @@ function norm(raw){
  return size&&!name.toUpperCase().endsWith(size.toUpperCase())?(name+" "+size).trim():name}
 function parsePostex(t,notes,src){
  const out=[];if(!t.includes("Consignee Information"))return out;
- let ch=t.split(/(?=Consignee Information\s+Shipment Information)/);if(ch.length<=1)ch=t.split(new RegExp("(?=Order Ref:\\s*"+OID+")"));
+ const cre=/(?=Consignee Information\s+Shipment Information)/;let ch=cre.test(t)?t.split(cre):t.split(new RegExp("(?=Order Ref:\\s*"+OID+")"));
  for(const c of ch){
   let r=c.match(new RegExp("Order Ref:\\s*("+OID+")"))||c.match(new RegExp("("+OID+")"));if(!r)continue;
   const oid=r[1].replace(/\s+/g,""),pcs=c.match(/Pieces:\s*(\d+)/);let items=[];
@@ -106,7 +106,7 @@ function parsePostex(t,notes,src){
  return out}
 function parseInsta(t,notes,src){
  const out=[];if(!t.includes("Order #:")&&!t.toUpperCase().includes("INSTA"))return out;
- let ch=t.split(/(?=Order #:)/);if(ch.length<=1)ch=t.split(/(?=INSTA)/i);
+ let ch=t.includes("Order #:")?t.split(/(?=Order #:)/):t.split(/(?=INSTA)/i);
  for(const c of ch){
   const r=c.match(new RegExp("Order #:\\s*("+OID+")","i"));if(!r)continue;
   const oid=r[1].replace(/\s+/g,""),pcs=c.match(/Pieces:\s*(\d+)/i),seg=c.match(/Weight:\s*[\d.]+\s*Kg\s*(?:[A-Z]{0,2}\d{9,}\s*)?(.*)/is);
